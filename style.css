@@ -86,3 +86,113 @@ a:active {
   margin-right: 5px;
   vertical-align: sub;
 }
+
+/* Modal */
+.modal-container {
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.show-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 95%;
+  width: 500px;
+  animation: modalopen 2s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#close-modal {
+  float: right;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+#close-modal:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-header {
+  background: rgba(52, 224, 158, 0.5);
+  color: rgb(0, 0, 0);
+  padding: 10px;
+}
+
+h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 20px;
+  background: whitesmoke;
+}
+
+/* Form */
+.form-group {
+  height: 70px;
+}
+
+.form-input {
+  width: 96%;
+  padding: 5px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  display: block;
+  outline: none;
+}
+
+.form-label {
+  color: black;
+  display: block;
+  margin: 5px;
+}
+
+button {
+  cursor: pointer;
+  color: black;
+  background: var(--primary-color);
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: var(--border-radius);
+  margin-top: 10px;
+}
+
+button:hover {
+  filter: brightness(90%);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
