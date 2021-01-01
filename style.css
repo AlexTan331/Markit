@@ -109,7 +109,7 @@ a:active {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   max-width: 95%;
   width: 500px;
-  animation: modalopen 2s;
+  animation: modalopen 1s;
 }
 
 @keyframes modalopen {
