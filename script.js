@@ -4,13 +4,16 @@ const modalClose = document.getElementById("close-modal");
 const bookmarkForm = document.getElementById("bookmark-form");
 const websiteNameEl = document.getElementById("website-name");
 const websiteUrlEl = document.getElementById("website-url");
+const websiteDescriptionEl = document.getElementById("website-description");
 const bookmarkContainer = document.getElementById("bookmarks-container");
+const infoContainer = document.getElementById("info-container");
+const description = document.getElementById("description");
 
 let bookmarks = {};
 
 modal.classList.remove("show-modal");
 fetchBookmarks();
-buildBookmarks();
+infoContainer.style.display = "none";
 
 function showModal() {
   modal.classList.add("show-modal");
@@ -30,6 +33,7 @@ window.addEventListener("click", (e) =>
 function submitBookmark() {
   const nameValue = websiteNameEl.value;
   let urlValue = websiteUrlEl.value;
+  const desc = websiteDescriptionEl.value;
 
   if (!urlValue.includes("http://") && !urlValue.includes("https://")) {
     urlValue = `https://${urlValue}`;
@@ -40,6 +44,7 @@ function submitBookmark() {
   const bookmark = {
     name: nameValue,
     url: urlValue,
+    description: desc,
   };
 
   bookmarks[urlValue] = bookmark;
@@ -47,7 +52,6 @@ function submitBookmark() {
   bookmarkForm.reset();
   websiteNameEl.focus();
   fetchBookmarks();
-  buildBookmarks();
 }
 
 function validate(nameValue, urlValue) {
@@ -68,9 +72,8 @@ function validate(nameValue, urlValue) {
 function fetchBookmarks() {
   if (localStorage.getItem("bookmarks")) {
     bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-    
+    buildBookmarks();
   }
-
 }
 
 // Build bookmark div component
@@ -82,7 +85,8 @@ function buildBookmarks() {
 
     const item = document.createElement("div");
     item.classList.add("item");
-
+    item.setAttribute("onmouseover", `displayInfo('${id}')`);
+    item.setAttribute("onmouseout", "hideInfo(this)");
     const closeIcon = document.createElement("i");
     closeIcon.classList.add("fas", "fa-window-close");
     closeIcon.setAttribute("title", "Delete Bookmark");
@@ -116,7 +120,15 @@ function deleteBookmark(id) {
 
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   fetchBookmarks();
-  buildBookmarks();
 }
 
 bookmarkForm.addEventListener("submit", submitBookmark);
+
+function displayInfo(id) {
+  description.innerText = bookmarks[id].description;
+  infoContainer.style.display = "contents";
+}
+
+function hideInfo() {
+  infoContainer.style.display = "none";
+}

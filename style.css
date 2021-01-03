@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 
 :root {
   --primary-color: #ece5e5;
@@ -87,6 +89,24 @@ a:active {
   vertical-align: sub;
 }
 
+/* Link info */
+.website-info {
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius);
+  width: 50%;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 25px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
 /* Modal */
 .modal-container {
   background: rgba(0, 0, 0, 0.6);
@@ -152,10 +172,6 @@ h3 {
 }
 
 /* Form */
-.form-group {
-  height: 70px;
-}
-
 .form-input {
   width: 96%;
   padding: 5px;
